@@ -23,6 +23,10 @@ Colors and the Ghost font stack above are the only things this file pulls from `
 
 *(2026-08-13: rebuilt. The old version used a `<style>` block with CSS classes, a `:hover` state, a `@media` query, an external Font Awesome stylesheet `<link>`, and a `font-family: 'Athletics'` that's never loaded in Ghost. All of that either gets stripped by Ghost or never worked, silently. This version is fully inline, no external dependency, and uses the same Avenir Next stack as every other card in this file.)*
 
+*(2026-09-16: a second author card was submitted for Kanishka using that exact old broken pattern again — external Font Awesome `<link>`, a `<style>` block with `:hover`/`@media`, `font-family: 'Athletics'`. Rebuilt the same way as Nikita's below instead of using it as-is — see "Author Card — Kanishka" further down. Pick whichever author card matches the Stage 5 author slug for a given blog; do not reintroduce the `<style>`/Font Awesome/Athletics pattern for any future author card.)*
+
+### Author Card — Nikita Joshi
+
 ```html
 <!-- Cuemath Author Bio Card — Nikita Joshi -->
 <div style="font-family: 'Avenir Next','Nunito Sans','Helvetica Neue',Arial,sans-serif; max-width: 680px; margin: 40px auto 0;">
@@ -64,7 +68,55 @@ Colors and the Ghost font stack above are the only things this file pulls from `
 </div>
 ```
 
-**Usage:** End of every blog. This is the canonical author card — do not use any previous version. No `<style>` block, no CSS classes, no `:hover`, no `@media`, no external stylesheet — everything is inline, matching how every other card in this file is built. There's no hover effect and no mobile-specific padding override anymore; the card is sized to work at every width without either.
+**Usage:** End of every blog by Nikita Joshi. No `<style>` block, no CSS classes, no `:hover`, no `@media`, no external stylesheet — everything is inline, matching how every other card in this file is built. There's no hover effect and no mobile-specific padding override anymore; the card is sized to work at every width without either.
+
+### Author Card — Kanishka
+
+```html
+<!-- Cuemath Author Bio Card — Kanishka -->
+<div style="font-family: 'Avenir Next','Nunito Sans','Helvetica Neue',Arial,sans-serif; max-width: 680px; margin: 40px auto 0;">
+  <div style="background: #ffffff; border: 1px solid #EBEBEB; border-radius: 12px; padding: 24px; box-sizing: border-box; box-shadow: 0 2px 10px rgba(34,27,53,0.07);">
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+      <img
+        src="https://www.cuemath.com/blog/content/images/2026/08/kanishka-author-photo-grey-blazer.png"
+        alt="Kanishka"
+        width="56"
+        height="56"
+        style="width: 56px; height: 56px; min-width: 56px; border-radius: 50%; object-fit: cover; object-position: center top; box-shadow: 0 0 0 2.5px #FFB700; flex-shrink: 0; display: block;"
+      >
+
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 5px;">
+          <span style="font-size: 17px; font-weight: 700; color: #221B35; line-height: 1.3;">Kanishka</span>
+          <a href="https://www.linkedin.com/in/kanishka-a72463214" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #F5F5F5; border-radius: 12px; text-decoration: none; color: #221B35; font-size: 11px; font-weight: 700; font-family: Arial, sans-serif;">in</a>
+          <a href="mailto:kanishka.raj@cuemath.com" title="Email" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #F5F5F5; border-radius: 12px; text-decoration: none; color: #221B35; font-size: 13px;">&#9993;</a>
+        </div>
+        <span style="font-size: 12px; color: #6B6480; font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase;">SEO Content Writer &amp; Editor</span>
+      </div>
+    </div>
+
+    <div style="height: 1px; background: #EBEBEB; margin-bottom: 16px;"></div>
+
+    <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #0D0D0D; font-weight: 400;">
+      I was never the kid who loved math. I was much more interested in books, stories, and writing — and, somewhere along the way, I became even more curious about people. Why do we learn differently? Why does something make sense to one child but not another? And what makes a student feel confident enough to keep trying?
+      <br><br>
+      That curiosity led me to study Applied Psychology, where I learned more about how children think, learn, and make sense of the world around them.
+      <br><br>
+      My love for writing did the rest. What started as something I simply enjoyed became a career. Over the past five years, I've worked as a freelance writer across edtech, SaaS, B2B, travel, lifestyle, and healthcare, learning how to write for very different audiences without losing the human side of the story.
+      <br><br>
+      Today, I'm an SEO Content Writer &amp; Editor at Cuemath, where I get to bring many of these interests together. Working in education — and especially around math — has made me even more curious about what happens behind the screen or textbook: what parents worry about, what students struggle with, and what actually helps them learn.
+      <br><br>
+      That's also how I like to research. I don't just look at search results and call it a day. I go where parents and students actually talk — forums, reviews, communities, and conversations with real families. Because sometimes the most useful insight isn't hiding in a keyword; it's in a parent's question, a student's frustration, or a small detail someone shares about their learning experience.
+      <br><br>
+      I write because I'm curious. I research because I want to understand. And I love turning what I learn into content that feels genuinely useful to the people reading it.
+    </p>
+
+  </div>
+</div>
+```
+
+**Usage:** End of every blog by Kanishka. Same inline-only pattern as Nikita's card above — no `<style>` block, no external Font Awesome, no `Athletics` font-family. The LinkedIn/email icons are plain inline `<a>` badges (matching Nikita's card's "in" / envelope-glyph style) instead of Font Awesome icon fonts, since Ghost strips the external stylesheet silently and the icons would just never render.
 
 ---
 
