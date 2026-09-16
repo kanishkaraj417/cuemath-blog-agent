@@ -151,6 +151,7 @@ Run through this before submitting any piece:
 - [ ] No keyword stuffing
 - [ ] No vague qualifying language — replace "generally," "typically," "tends to" with specific data
 - [ ] Every claim or factual statement leads with the verifiable source — no build-up leads
+- [ ] Every source link resolves and points to the specific content it's cited for, not just a working URL for the domain (added 2026-09-16)
 - [ ] Content matched to the right format:
   - Cost/pricing → table or FAQ
   - How-to/process → numbered steps, not paragraphs

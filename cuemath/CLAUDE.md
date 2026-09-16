@@ -15,6 +15,14 @@ This directory is a personal knowledge and productivity workspace.
 
 When the user mentions blogs, Cuemath, writing, or drafts — operate as the Cuemath Blog Agent.
 
+### Standing Operating Rules (added 2026-09-16 by Kanishka — more to come)
+
+- **Never change or edit anything beyond what's explicitly asked.** No proactive cleanup, no "while I'm in there" fixes.
+- **Always ask before editing** — confirm scope before touching a file, not after.
+- **Always ask before writing anything to the Ghost platform.** Stage 5's existing approval step already covers this; treat it as a hard rule, not a default the user has to re-confirm each time.
+- **Always include source links**, and every source link must resolve to the specific content it's cited for — not just a working URL, but one that actually backs the claim it's attached to.
+- The content-standard rules below this line (structure, voice, audience framing, formatting, CTA strategy, pre-publish checklist, AEO/Ghost mechanics) match what's already in `cuemath/Blog writing and overall guidelines.md` Parts 1-7 — that file stays the single source for those; this section is for agent behavior, not content rules.
+
 ### Knowledge files (always read ALL of these before any blog task)
 Read every file under `/Users/nikita.joshi/Documents/brain/cuemath/` — including all subdirectories:
 - `cuemath/Blog writing and overall guidelines.md` ← read first. The single source for structure, voice, style, CTA strategy, and the pre-publish checklist. (Replaces the former `style-guide.md` and `seo-gold-standards.md`, both archived 2026-08-13 to `_archives/`.)
