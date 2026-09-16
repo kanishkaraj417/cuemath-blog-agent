@@ -74,7 +74,7 @@ Colors and the Ghost font stack above are the only things this file pulls from `
 <div style="padding:28px 24px; border-radius:12px; background-color:#FFF1CC; width:100%; max-width:100%; box-sizing:border-box; text-align:center; font-family:'Avenir Next','Nunito Sans','Helvetica Neue',Arial,sans-serif;">
   <h2 style="color:#221B35; font-size:24px; font-weight:700; margin:0 0 12px;">[HEADING — write based on blog topic and placement position, see rules below]</h2>
   <p style="font-size:18px; line-height:1.6; color:#221B35; margin:0 0 22px;">[SUPPORTING LINE — 1–2 sentences, specific to what the reader just read or needs next]</p>
-  <a href="https://cuemath.link/mathapps" target="_blank" style="display:inline-block; padding:14px 32px; background-color:#FFD24D; color:#221B35; text-decoration:none; font-weight:700; font-size:18px; border-radius:12px; letter-spacing:0.4px;">Book a Free Class</a>
+  <a href="https://www.cuemath.com/parent/signup/?utm_source=blog-lead&utm_medium=FULL_BLOG_URL&utm_campaign=CAMPAIGN_NAME" target="_blank" style="display:inline-block; padding:14px 32px; background-color:#FFD24D; color:#221B35; text-decoration:none; font-weight:700; font-size:18px; border-radius:12px; letter-spacing:0.4px;">Book a Free Class</a>
   <p style="font-size:16px; color:#221B35; margin-top:18px; font-weight:600;">For Students in Grades K to 12 Worldwide</p>
 </div>
 ```

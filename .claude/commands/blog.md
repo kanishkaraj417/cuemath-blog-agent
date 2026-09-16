@@ -165,7 +165,7 @@ The draft must include, in this order:
    - [ ] FAQ: first sentence of every answer directly states the answer (per the guidelines file)
    - [ ] Sources section: all URLs verified, grouped by claim type, each states what claim it backs
    - [ ] All external/competitor links use `rel="nofollow noopener"` via ext_link_card (never inline)
-   - [ ] All Cuemath links are Rebrandly short links — no raw cuemath.com URLs in HTML
+   - [ ] Every link to the Cuemath website (`cuemath.com` pages, `app.cuemath.com`) or a third-party app store has UTM parameters appended directly to the full URL — no bare/un-tagged Cuemath links in HTML, and no shortener used (see Step B3)
 
 After saving and opening in Obsidian, tell the user:
 > "Draft saved and opened in Obsidian. Read through it and reply with your approval or any changes you want. **I will not start Stage 4 (HTML, images, Ghost upload) until you explicitly say you approve.**"
@@ -190,20 +190,20 @@ When the user approves, do the following:
   > - Image 2 (after hidden costs): [description from placeholder]
   > - Image 3 (before comparison table): [description from placeholder]
   > Please share the image URL or upload the file for each.
-- Replace all [HTML CARD: CTA box] placeholders with the actual CTA HTML from html-templates.md, but leave the `href` as a literal `PENDING-REBRANDLY` marker for now — do NOT insert `https://www.cuemath.com/parent/signup` or any raw Cuemath URL directly into the HTML. Step B3 below creates the real Rebrandly link that fills this in; inserting the raw URL now risks it slipping through unreplaced.
+- Replace all [HTML CARD: CTA box] placeholders with the actual CTA HTML from html-templates.md, but leave the `href` as a literal `PENDING-UTM` marker for now — do NOT insert `https://www.cuemath.com/parent/signup` or any other Cuemath URL without its UTM parameters into the HTML. Step B3 below builds the real UTM-tagged URL that fills this in; inserting the bare URL now risks it slipping through untagged.
 - Replace all [HTML CARD: Author card] with the author card HTML from html-templates.md
 
 **Step B — Ask the user:**
 > - Which Trustpilot reviews to include? (I'll use US-safe reviews from trust-and-results.md unless you specify others)
 > - Should I add Student Achievement Cards in the Cuemath section? (For comparison blogs — Bryan Tu, Aadi Sujan, Nivriti Bharatram, Harshitha Sudhakar, Midyan/Vanya)
-> - Which Cuemath URLs do you want linked? (paste the raw URLs — I will NOT use them directly yet; Rebrandly short links must be created first)
+> - Which Cuemath URLs do you want linked? (paste the raw URLs — I will NOT use them directly yet; UTM parameters must be appended first, per Step B3)
 > - Any other HTML cards to add or sections to change?
 
 **Step B2 — Interlinking (always ask, upon approval):**
 After the user responds to Step B, read `cuemath/blogs/published/tracker.md` (the live list of published posts) and always ask:
 > - Should I add blog interlinking? I'll scan the live tracker for published posts that are topically relevant and suggest anchor text + placement. Approve or pick from the list.
 
-Once the user approves interlinking suggestions, add those links to the list for Rebrandly processing.
+Once the user approves interlinking suggestions, add those links to the list for UTM processing per Step B3 — unless they are `cuemath.com/blog/` links, which never get UTMs (see Step B3).
 
 **External link rule (enforced for ALL competitor/external links — no exceptions):**
 Ghost's inline link editor cannot add `rel="nofollow"`. To guarantee nofollow is preserved, **never link to external/competitor sites inline in prose**. Instead:
@@ -226,15 +226,32 @@ Ghost's inline link editor cannot add `rel="nofollow"`. To guarantee nofollow is
   Example usage: `ext_link_card(("Kahoot", KAHOOT_HOME), ("Kahoot Pricing Plans", KAHOOT_PRICING))`
 - This applies to: competitor platforms, tool homepages, pricing pages, Stanford/study links in prose. Sources section links at the bottom are exempt (they are expected external citations).
 
-**Step B3 — Rebrandly UTM links (required before any Cuemath link goes into HTML):**
+**Step B3 — UTM links, appended directly to the full URL (no shortener — Rebrandly is not used):**
 
-For every Cuemath URL the user has approved (internal pages + blog interlinks that are cuemath.com URLs):
-1. Create a Rebrandly short link using the standard UTM convention and back-half naming
-2. Use ONLY the Rebrandly short link in all HTML — never the raw cuemath.com URL
-3. CTAs always point to `https://www.cuemath.com/parent/signup` via its Rebrandly short link — **except** any link/CTA pointing to `app.cuemath.com` (see rule below)
-4. **`app.cuemath.com` links always use `utm_campaign=blog-app-cta`.** This is a fixed value across every blog, regardless of blog topic — it's the bucket for tracking all app signups sourced from blog CTAs in aggregate. `utm_source` and `utm_medium` still follow the standard convention (blog-lead / blog URL); use `utm_content` (e.g. `mid`, `end`) to distinguish multiple app CTAs on the same blog.
+*(2026-09-16: Rebrandly access was removed. Do not create short links or reference `cuemath.link` anywhere. Every Cuemath-bound link gets its UTM parameters appended directly onto the full destination URL instead, and that tagged full URL is the `href` used in HTML.)*
 
-Do NOT build the Ghost JSON or upload until all Rebrandly links are confirmed.
+**Which links need UTMs:** any link pointing to the Cuemath website itself (`cuemath.com` — signup, tutors, math-test, pricing, curriculum, about, etc.) or `app.cuemath.com`, plus external third-party app store links (e.g. Apple App Store). The test is "does this link go to the Cuemath website (or an app store for a Cuemath app)," not a fixed list of pages.
+
+**Never add UTMs to:** links under `cuemath.com/blog/` (internal blog-to-blog links) — leave those as plain raw URLs, no query string.
+
+**Standard UTM convention:**
+```
+https://destination-url.com/?utm_source=blog-lead&utm_medium=FULL_BLOG_URL&utm_campaign=CAMPAIGN_NAME
+```
+- `utm_source` = `blog-lead` (always)
+- `utm_medium` = the full blog URL this link lives on, e.g. `www.cuemath.com/blog/cuemath-vs-khan-academy/`
+- `utm_campaign` = a blog-specific campaign name (ask the user if unsure)
+
+For every Cuemath/app-store URL the user has approved (internal pages + blog interlinks that are cuemath.com URLs, excluding `/blog/` links):
+1. Build the tagged URL using the convention above.
+2. Use ONLY the UTM-tagged full URL in all HTML — never a bare/untagged Cuemath URL, and never a shortener.
+3. CTAs always point to `https://www.cuemath.com/parent/signup` (UTM-tagged) — **except** any link/CTA pointing to `app.cuemath.com` (see fixed exception below).
+4. **`app.cuemath.com` links always use `utm_campaign=blog-app-cta`.** This is a fixed value across every blog, regardless of blog topic — it's the bucket for tracking all app signups sourced from blog CTAs in aggregate. `utm_source` and `utm_medium` still follow the standard convention (blog-lead / blog URL); use `utm_content` (e.g. `mid`, `end`) to distinguish multiple app CTAs on the same blog. Example:
+   ```
+   https://app.cuemath.com/?utm_source=blog-lead&utm_medium=www.cuemath.com/blog/fun-preschool-math-activities-for-kids/&utm_campaign=blog-app-cta&utm_content=mid
+   ```
+
+Do NOT build the Ghost JSON or upload until all UTM-tagged links are confirmed.
 
 **HTML Color Palette — apply to every card in every blog (no exceptions):**
 
@@ -249,8 +266,8 @@ Do not use a separate color table here. `html-templates.md` (read at the start o
 - No `display:inline-block` on full-width elements
 - No fixed pixel widths on outer containers
 
-**Step C — After Rebrandly links are confirmed:**
-- Build all HTML cards (fully filled in, no placeholders, all Cuemath links via Rebrandly)
+**Step C — After UTM-tagged links are confirmed:**
+- Build all HTML cards (fully filled in, no placeholders, all Cuemath/app-store links using their UTM-tagged full URLs)
 - Apply the color palette and mobile rules above to every card
 - Wrap every custom HTML element in kg-card tags:
   ```

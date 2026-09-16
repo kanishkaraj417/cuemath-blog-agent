@@ -2,9 +2,11 @@
 
 This folder gives you the `/blog` slash command in Claude Code: a 5-stage flow that researches a keyword, drafts a full blog post to Cuemath's style guide, builds the Ghost-ready HTML, and publishes it.
 
-You'll need your own access to: **Ghost** (admin), **Ahrefs**, **Rebrandly**, and **Claude Code**. Nothing in this folder includes anyone else's API keys — each person fills in their own below.
+You'll need your own access to: **Ghost** (admin), **Ahrefs**, and **Claude Code**. Nothing in this folder includes anyone else's API keys — each person fills in their own below.
 
-> **Fastest path: let Claude do steps 1-3 for you.** Unzip the folder, open it in your terminal, run `claude`, and say something like: *"Read ONBOARDING.md and set this up for me — create cuemath/.env, and here are my keys: Ghost Admin API key is ..., Rebrandly API key is ..., Ahrefs token is ..."* Claude will create the `.env` file, fill it in, and add the MCP server connections in step 3 for you. You can still do it manually with the commands below if you'd rather.
+> **2026-09-16: Rebrandly is no longer used.** Links to the Cuemath website get UTM parameters appended directly to the full URL instead of a `cuemath.link` short link — see `cuemath/rebrandly-link-guide.md` for the current convention. No `REBRANDLY_API_KEY`/`REBRANDLY_DOMAIN_ID` needed.
+
+> **Fastest path: let Claude do steps 1-3 for you.** Unzip the folder, open it in your terminal, run `claude`, and say something like: *"Read ONBOARDING.md and set this up for me — create cuemath/.env, and here are my keys: Ghost Admin API key is ..., Ahrefs token is ..."* Claude will create the `.env` file, fill it in, and add the MCP server connections in step 3 for you. You can still do it manually with the commands below if you'd rather.
 
 ## 1. Unzip and open as a Claude Code project
 
@@ -24,8 +26,6 @@ cp .env.example cuemath/.env
 
 Fill in `cuemath/.env`:
 - `GHOST_ADMIN_API_KEY` — Ghost Admin -> Settings -> Integrations -> (your custom integration) -> Admin API Key
-- `REBRANDLY_API_KEY` — Rebrandly dashboard -> Account Settings -> API Keys
-- `REBRANDLY_DOMAIN_ID` — already filled in for `cuemath.link`; only change if that ever moves accounts
 - `AHREFS_TOKEN` — your Ahrefs account's API token (used below for the MCP connection, not read directly by any script)
 
 **Never share your filled-in `.env` file or commit it anywhere.** It's per-person.

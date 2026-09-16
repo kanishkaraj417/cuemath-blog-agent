@@ -15,8 +15,8 @@ Every blog written or received must have these things, in this order:
 5. Table of Contents — structured as per the decided theme
 6. Content
 7. Internal linking of similar blogs, blogs that will help readers, and CTAs
-   - Internal Cuemath blog links (cuemath.com/blog/...) need **no Rebrandly link and no UTM parameters**.
-   - Any CTA or link going to the Cuemath website (signup, app, pricing, etc.) **does** need a Rebrandly short link with UTM parameters.
+   - Internal Cuemath blog links (cuemath.com/blog/...) need **no UTM parameters** — plain raw URL.
+   - Any CTA or link going to the Cuemath website (signup, app, pricing, etc.) **does** need UTM parameters appended directly to the full URL (2026-09-16: Rebrandly access was removed — no short links anymore; see `cuemath/rebrandly-link-guide.md` for the current convention).
 8. FAQs
 
 ---
