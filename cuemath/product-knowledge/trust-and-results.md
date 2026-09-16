@@ -64,7 +64,7 @@ Source: https://www.trustpilot.com/review/cuemath.com (pages 1–4)
 > — Hussainatu, Parent, Trustpilot ★★★★☆ (Sep 14, 2026)
 > *Why US-safe: explicit US location tag, neutral language.*
 
-**Flagged for confirmation — location is Canada (CA), not explicitly India/UK, but not pre-cleared like the "US-safe" set above:**
+**Canada (CA)-located — confirmed OK to use in US blogs (2026-09-16, explicit user confirmation), despite not being pre-cleared like the "US-safe" set above:**
 
 > "She listens carefully to Prajay's questions and explains concepts clearly, sometimes multiple times, until he fully understands them. Over these 6 years, Shivani Ma'am has understood Prajay very well — his learning style, strengths, and areas where he needs more support."
 > — Nandakumar Thirunavukkarasu, Parent, Trustpilot ★★★★★ (Sep 15, 2026) — location: CA
